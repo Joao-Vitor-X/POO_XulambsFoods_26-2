@@ -20,30 +20,37 @@ namespace XulambsFoods {
         #endregion
 
         #region construtores
-        public Pizza() {
+        private void Init (int adicionais)
+        {
             _descricao = "Pizza";
             _maxIngredientes = 8;
             _precoBase = 29d;
-            _quantIngredientes = 0;
+            AdicionarIngredientes(adicionais);
             _valorPorAdicional = 5d;
+        }
+        public Pizza() {
+            Init(0);
         }
 
         public Pizza(int adicionais) {
-        
+            Init (adicionais);
         }
         #endregion
 
         #region métodos privados
-        private double ValorAdicionais() {
-                
+        private double ValorAdicionais() 
+        {
+            return _quantIngredientes * _valorPorAdicional;
         }
 
-        private void ModificarDescricao() {
-            _descricao = $"Pizza com {_quantIngredientes} adicionais";
+        private void ModificarDescricao() 
+        {
+            _descricao = $"Pizza com {_quantIngredientes} adicionais.";
         }
 
-        private bool PodeAdicionar(int quantos) {
-                
+        private bool PodeAdicionar(int quantos) 
+        {
+            return ((_quantIngredientes + quantos) <= _maxIngredientes) && quantos >= 0;
         }
         #endregion
 
@@ -61,9 +68,10 @@ namespace XulambsFoods {
         }
 
         public string GerarCupom() {
+            return $"{_descricao} | Preço: {CalcularValorFinal:C2}";
                 
         }
         #endregion
-
+        
     }
 }
