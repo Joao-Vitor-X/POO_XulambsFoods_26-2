@@ -21,7 +21,7 @@ namespace XulambsFoods {
             _taxaEntrega = _distanciaEntrega.DefinirEntrega();
         }
 
-        protected override bool PodeAdicionar() { //override: modificação da regra original
+        protected override bool PodeAdicionar() { //override: modificação da regra original.
             return base.PodeAdicionar() && _pizzas.Count < MaxEntrega;
         }
 
@@ -29,9 +29,9 @@ namespace XulambsFoods {
             return _taxaEntrega.ValorTaxa();
         }
 
-        public override double PrecoAPagar() {
-            double valorPizzas = base.PrecoAPagar();
-            return valorPizzas + ValorTaxa();
+        public override double PrecoAPagar()
+        {
+            return Subtotal() + ValorTaxa();
         }
 
         protected override string RodapePedido()

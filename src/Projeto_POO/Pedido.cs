@@ -1,7 +1,7 @@
 using System.Text;
 
 namespace XulambsFoods {
-    public class Pedido {
+    public abstract class Pedido {
         private static int s_ultimoPedido=0;
         private int _idPedido;
         private DateOnly _data;
@@ -29,14 +29,16 @@ namespace XulambsFoods {
         public void FecharPedido() {
             _aberto = false;
         }
-
-        public virtual double PrecoAPagar() {
+        protected double Subtotal()
+        {
             double preco = 0d;
-            foreach (Pizza pizza in _pizzas) {
+            foreach (Pizza pizza in _pizzas)
+            {
                 preco += pizza.CalcularValorFinal();
             }
             return preco;
         }
+        public abstract double PrecoAPagar();
 
         protected string CabecalhoPedido()
         {
