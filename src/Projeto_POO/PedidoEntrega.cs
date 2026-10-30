@@ -23,7 +23,7 @@ namespace XulambsFoods {
 
         protected override void PodeAdicionar() { //override: modificação da regra original
             base.PodeAdicionar();
-            if (_pizzas.Count == MaxEntrega)
+            if (_itens.Count == MaxEntrega)
                 throw new PedidoCheioException(this);
         }
 

@@ -3,7 +3,7 @@ using System.Text;
 
 
 namespace XulambsFoods {    
-    public class Pizza {
+    public class Pizza : ItemPedido {
 
         /// <summary>
         /// Lembre-se:
@@ -83,7 +83,7 @@ namespace XulambsFoods {
         #endregion
 
         #region métodos públicos
-        public double CalcularValorFinal() {
+        public override double CalcularValorFinal() {
             return PrecoBase + ValorAdicionais() + _borda.Valor();
         }
 
